@@ -18,7 +18,7 @@ import java.util.Set;
  */
 @Slf4j
 @Controller
-@RequestMapping(FileController.VIEW_NAME)
+@RequestMapping({"/", FileController.VIEW_NAME})
 public class FileController {
     public static final String VIEW_NAME = "files";
 
