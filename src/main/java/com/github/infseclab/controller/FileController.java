@@ -37,10 +37,10 @@ public class FileController {
     }
 
     @PostMapping
-    public ModelAndView uploadFile(@RequestParam("file") MultipartFile file) {
+    public String uploadFile(@RequestParam("file") MultipartFile file) {
         String name = file.getOriginalFilename();
         log.info("uploading file {}" + name);
         fileService.saveFileByAuthenticatedUser(name);
-        return getFilesView();
+        return "redirect:" + VIEW_NAME;
     }
 }
