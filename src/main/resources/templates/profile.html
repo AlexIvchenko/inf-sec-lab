@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header('Sign Up')"></head>
+<body>
+<div th:replace="fragments/header :: page-header"></div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-6">
+            <form th:action="@{/profile}" th:object="${passwords}" method="POST" enctype="utf8">
+                <div class="form-group">
+                    <label for="oldPassword">Old Password</label>
+                    <input id="oldPassword" class="form-control" type="password" th:field="*{oldPassword}" th:classappend="${#fields.hasErrors('oldPassword')} ? 'is-invalid' : ''"/>
+                    <div th:each="err : ${#fields.errors('oldPassword')}" class="invalid-feedback" th:text="${err}"></div>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input id="newPassword" class="form-control" type="password" th:field="*{newPassword}" th:classappend="${#fields.hasErrors('newPassword')} ? 'is-invalid' : ''"/>
+                    <div th:each="err : ${#fields.errors('newPassword')}" class="invalid-feedback" th:text="${err}"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
