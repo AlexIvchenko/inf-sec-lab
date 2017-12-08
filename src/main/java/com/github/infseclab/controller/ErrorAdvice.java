@@ -1,5 +1,6 @@
 package com.github.infseclab.controller;
 
+import com.github.infseclab.exception.NotAuthenticatedUserException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
@@ -21,4 +22,10 @@ public class ErrorAdvice {
         model.addAttribute("errorMessage", errorMessage);
         return "error";
     }
-}
+
+    @ExceptionHandler(NotAuthenticatedUserException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public String handleAuthException(final NotAuthenticatedUserException ex, final Model model) {
+        return "signIn";
+    }
+ }
