@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header('Index')"></head>
+<body>
+<div th:replace="fragments/header :: page-header"></div>
+
+
+<div class="container mt-5 justify-content-center">
+    <div class="col-4">
+        <form method="POST" enctype="multipart/form-data" th:action="@{/files}">
+            <label class="custom-file" id="customFile">
+                <input type="file" class="custom-file-input" id="file" name="file"/>
+                <span class="custom-file-control form-control-file"></span>
+            </label>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+
+    <div class="col-4" th:each="file : ${files}">
+        <a href="#" th:text="${file.name}"></a>
+    </div>
+
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+<script>
+    $('.custom-file-input').on('change', function () {
+        console.log('changed');
+        $(this).next('.form-control-file').addClass("selected").html($(this).val());
+    });
+</script>
+</html>

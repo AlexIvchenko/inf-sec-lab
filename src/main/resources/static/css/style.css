@@ -1,0 +1,19 @@
+#customFile .custom-file-control::after {
+    content: "Select file...";
+}
+
+#customFile .custom-file-control::before {
+    content: "Click me";
+}
+
+/*when a value is selected, this class removes the content */
+.custom-file-control.selected::after {
+    content: "" !important;
+}
+
+.custom-file {
+    overflow: hidden;
+}
+.custom-file-control {
+    white-space: nowrap;
+}
