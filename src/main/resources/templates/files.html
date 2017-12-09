@@ -36,7 +36,7 @@
         const fullName = $(this).val();
         const names = fullName.split('\\');
         const name = names[names.length - 1];
-        $(this).next('.form-control-file').addClass("selected").html(name);
+        $(this).next('.form-control-file').addClass("selected").text(name);
     });
 </script>
 </html>
